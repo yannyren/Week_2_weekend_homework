@@ -5,9 +5,16 @@ require('pry')
 
 class TestGuestName < Minitest::Test
 
+def setup
+  @tom = Guests.new("Tom", 35)
+end
+
 def test_guest_name
-  tom = Guests.new("Tom")
-  assert_equal("Tom", tom.name)
+  assert_equal("Tom", @tom.name)
 end  
+
+def test_guest_money
+  assert_equal(35, @tom.money)
+end 
 
 end 
