@@ -8,9 +8,9 @@ require('pry')
 class TestRooms < Minitest::Test
 
   def setup
-    @tom = Guests.new("Tom", 35)
-    @jerry = Guests.new("Jerry", 15)
-    @harry = Guests.new("harry", 25)
+    @tom = Guests.new("Tom", 35, "Sing in the rain")
+    @jerry = Guests.new("Jerry", 15, "Friday")
+    @harry = Guests.new("harry", 25, "Only you")
     
 
     @only_you = Songs.new("Only you")
@@ -18,6 +18,7 @@ class TestRooms < Minitest::Test
 
     @room1 = Rooms.new("1", 30, 20)
     @room2 = Rooms.new("2", 20, 20)
+
   end
 
   def test_room_number
@@ -54,6 +55,12 @@ class TestRooms < Minitest::Test
   def test_check_in_guest_with_filters
     @room1.check_in_guest_with_filters(@tom)
     assert_equal(1, @room1.guests_in_the_room.count)
+  end 
+
+  def test_song_list_has_guest_fav_song
+    @room1.add_songs(@only_you)
+    result = @room1.song_list_has_guest_fav_song(@harry)
+    assert_equal("Whoo", result)
   end 
 
 

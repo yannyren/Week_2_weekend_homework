@@ -24,4 +24,16 @@ class Rooms
     end
   end
 
+  def song_list_has_guest_fav_song(guest)
+    @song_list.each {|x| return "Whoo" if x.song_name == guest.fav_song}
+  end
+
+  # def song_list_has_guest_fav_song(guest)
+  #   found = "?"
+  #   @song_list.find {|x| found = "Whoo" if x.song_name == guest.fav_song}
+  #   found
+  # end
+
+
+
 end 
